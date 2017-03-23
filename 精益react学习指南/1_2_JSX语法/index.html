@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>学习react的JSX语法</title>
+	<script type="text/javascript" src="../ReactJS/react.js"></script>
+	<script type="text/javascript" src="../ReactJS/react-dom.js"></script>
+	<script type="text/javascript" src="../ReactJS/browser.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">
+		{/* 1. 遵循XML规则
+			2. 标签可以任意嵌套
+			3. 标签必须闭合
+			4. */}
+
+		{/* JSX组件分为HTML组件和react组件*/}
+		{/* HTML */}
+		function render(){
+			return <p>hello react world!</p>
+		}
+		function render(){
+			return <ul>
+					<li>list item 1</li>
+					<li>list item 2</li>
+				</ul>
+		}
+		{/* React */}
+		var Com = React.createClass({
+			render : function(){
+				return <p>this is a react component</p>
+			}
+		});
+		{/* 组件属性 */}
+		function render(){
+			return <div className='div1'>
+					<label htmlFor='in'></label>
+					<input type='text' onchange="" id='in'/>
+				</div>
+		}
+		{/* 模板 */}
+		function render(){
+			var text = 'hello react';
+			return <p>{text}</p>
+		}
+		ReactDOM.render(<Com />,document.getElementById('example'));
+	</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>React组件化</title>
+	<script type="text/javascript" src="../ReactJS/react.js"></script>
+	<script type="text/javascript" src="../ReactJS/react-dom.js"></script>
+	<script type="text/javascript" src="../ReactJS/browser.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">
+		/* 无状态组件 */
+		function StatelessComponent(props){
+			return <div>Hello {props.name}</div>
+		}
+
+		/* 组件状态State */
+		var Switch = React.createClass({
+			//定义组件的初始状态
+			getInitialState : function(){
+				return{
+					open : false
+				};
+			},
+			render : function(){
+				//通过this.state获取当前状态
+				console.log('render switch component');
+				var open = this.state.open;
+				return <label className="switch">
+					<input type="checkbox" checked={open} />
+				</label>
+			},
+			//通过setState修改组件状态
+			//调用setState后 React会调用render方法重新渲染
+			toggleSwitch:function(){
+				var open = this.state.open;
+				this.setState({
+					open : !open
+				});
+			}
+		});
+
+		/* 组件属性Props */
+		// this.props 获取属性值
+		// getDefaultProps:获取默认属性对象
+		// this.props.children 子节点属性
+		// propTypes 属性类型检查
+
+		var TodoItem = React.createClass({
+			render: function(){
+				var props = this.props;
+				return <span>
+					{props.name}
+				</span>
+			}
+		});
+		ReactDOM.render(<TodoItem name="待办事项" />,document.getElementById('example'));
+		//次例中 props.name 为 待办事项
+	</script>
+</body>
+</html>
