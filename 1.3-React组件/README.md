@@ -1,7 +1,7 @@
-##构建react组件的三种方式
+## 构建react组件的三种方式
 * React.createClass
 
-```
+```JavaScript
 var Buttom = React.createClass({
 	getDefaultProps(){
 		return{
@@ -19,11 +19,11 @@ var Buttom = React.createClass({
 
 * ES6 class
 
-详见index.html
+详见*index.html*
 
 * 无状态组件
 
-```
+```javascript
 function Button({color : 'blue',text : 'Confirm'}){
 	return (
 		<button className={`btn btn-${color}`}>
