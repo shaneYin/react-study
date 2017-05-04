@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>React组件的生命周期</title>
+	<script type="text/javascript" src="../ReactJS/react.js"></script>
+	<script type="text/javascript" src="../ReactJS/react-dom.js"></script>
+	<script type="text/javascript" src="../ReactJS/browser.min.js"></script>
+</head>
+<body>
+	<div id="div1"></div>
+	<script type="text/babel">
+		// 演示数据更新时的生命周期
+		// 数据更新就是父组件向下传递props或者自己执行setState发生的动作
+
+		class App extends React.Component{
+			constructor(props){
+				super(props);
+				this.state = {
+					count : 0
+				};
+				this.handleClick = this.handleClick.bind(this);
+			}
+			handleClick(e){
+				e.preventDefault();
+				this.setState({
+					count : this.state.count + 1
+				});
+			}
+			render() {
+				return (
+					<div>
+						<p>{this.state.count}</p>
+						<a href="#" onClick={this.handleClick}>更新</a>
+					</div>
+				);
+			}
+			shouldComponentUpdate(nextState){
+				if(nextState != 0){
+					return true;
+				}
+			}
+			componentWillUpdate(nextState){
+				alert("即将更新");
+			}
+			componentDidUpdate(prevState){
+				alert("更新完毕");
+			}
+		}
+		ReactDOM.render(<App />,document.getElementById('div1'));
+	</script>	
+</body>
+</html>

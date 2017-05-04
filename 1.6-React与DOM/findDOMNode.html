@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>findDOMNode方法</title>
+	<script type="text/javascript" src="../ReactJS/react.js"></script>
+	<script type="text/javascript" src="../ReactJS/react-dom.js"></script>
+	<script type="text/javascript" src="../ReactJS/browser.min.js"></script>
+</head>
+<body>
+	<div id="div1"></div>
+	<script type="text/babel">
+		// 此方法只对已经挂载的组件有效
+
+		class App extends React.Component{
+			componentDidMount(){
+				const dom = ReactDOM.findDOMNode(this);
+				//this表示当前组件的实例
+				console.log(dom);
+			}
+			render(){
+				return(
+					<div>哈哈</div>
+				);
+			}
+		}
+		ReactDOM.render(<App />,document.getElementById('div1'));
+	</script>	
+</body>
+</html>

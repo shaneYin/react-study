@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>refs的使用</title>
+	<script type="text/javascript" src="../ReactJS/react.js"></script>
+	<script type="text/javascript" src="../ReactJS/react-dom.js"></script>
+	<script type="text/javascript" src="../ReactJS/browser.min.js"></script>
+</head>
+<body>
+	<div id="div1"></div>
+	<script type="text/babel">
+		// ref作为一个回调函数
+
+		class App extends React.Component {
+			constructor(props){
+				super(props);
+				this.handleClick = this.handleClick.bind(this);
+			}
+			handleClick(){
+				if(this.myTextInput !== null){
+					this.myTextInput.focus();
+					console.log(this.myTextInput.value);
+				}
+			}
+
+			render() {
+				return (
+					<div>
+						<input type="text" ref={(ref) => this.myTextInput = ref} />
+						{/* 把ref赋值给this.myTextInput ref就是他所在的DOM节点 */}
+						<input type="button" value="Focus the text input" onClick={this.handleClick} />
+					</div>
+				);
+			}
+		}
+		ReactDOM.render(<App />,document.getElementById('div1'));
+	</script>	
+</body>
+</html>

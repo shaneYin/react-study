@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>一个计数器组件</title>
+	<script type="text/javascript" src="../ReactJS/react.js"></script>
+	<script type="text/javascript" src="../ReactJS/react-dom.js"></script>
+	<script type="text/javascript" src="../ReactJS/browser.min.js"></script>
+</head>
+<body>
+	<div id="div1"></div>
+	<script type="text/babel">
+		//一个计数器组件
+		class Counter extends React.Component{
+			constructor(props){
+				super(props);
+				this.state = {         //初始化state
+					count : 0
+				};
+				this.handleClick = this.handleClick.bind(this);  //改变函数this指向
+			}
+			handleClick(e) {
+				e.preventDefault();
+				this.setState({
+					count : this.state.count + 1
+				});
+			}
+			render() {
+				return (
+					<div>
+						<p>{this.state.count}</p>
+						<a href="#" onClick={this.handleClick}>更新</a>
+					</div>
+				);
+			}
+		}
+		ReactDOM.render(<Counter />,document.getElementById('div1'));
+	</script>	
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>refs的使用</title>
+	<script type="text/javascript" src="../ReactJS/react.js"></script>
+	<script type="text/javascript" src="../ReactJS/react-dom.js"></script>
+	<script type="text/javascript" src="../ReactJS/browser.min.js"></script>
+</head>
+<body>
+	<div id="div1"></div>
+	<script type="text/babel">
+		// ref作为一个字符串
+
+		class App extends React.Component {
+			componentDidMount() {
+				const myComp = this.refs.myComp;
+				const dom = ReactDOM.findDOMNode(myComp);
+				console.log(myComp);
+				console.log(dom);
+			}
+
+			render() {
+				return (
+					<Comp ref="myComp" />
+				);
+			}
+		}
+		class Comp extends React.Component {
+			constructor(props){
+				super(props);
+			}
+			render() {
+				return (
+					<div>哈哈</div>
+				);
+			}
+		}
+		ReactDOM.render(<App />,document.getElementById('div1'));
+	</script>	
+</body>
+</html>
